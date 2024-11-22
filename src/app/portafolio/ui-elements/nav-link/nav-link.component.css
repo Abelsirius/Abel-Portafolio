@@ -1,0 +1,71 @@
+@import "@fontsource/satisfy/index.css";
+
+.bg {
+    background-color: #1f2937; /* gris oscuro */
+  }
+  .xd{
+    font-family: 'Satisfy', cursive;
+  }
+  #dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 10;
+    width: 12rem;
+    margin-top: 0.5rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    transition: 0.5s ease;
+  }
+  
+  a {
+    transition: all 0.3s ease;
+  }
+  
+
+  .icon-button {
+    width: 40px;              /* Ancho del botón */
+    height: 40px;             /* Alto del botón */
+    background-color: var(--color-primary-dark); /* Color verde */
+    border-radius: 50%;       /* Hace el botón redondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;           /* Color del icono */
+    font-size: 1.5rem;        /* Tamaño del icono */
+    cursor: pointer;          /* Cambia el cursor al pasar por encima */
+    transition: 1s ease;
+  }
+  
+  .icon-button:hover {
+    background-color: var(--color-primary); /* Color verde más oscuro al pasar el ratón */
+  }
+
+  .red{
+    background-color: var(--color-primary);
+  }
+
+  a.active {
+    background-color: #6e2d3db3; /* Color de fondo para el enlace activo */
+    color: white; /* Color del texto para el enlace activo */
+  }
+  .scroll-header {
+  background-color: var(--color-background);
+  box-shadow: 0 0 4px hsla(var(--primary-hue), 64%, 15%, .15);
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave */
+}
+.movil{
+  top: 0;
+  padding: 70px 10px 0 10px;
+  left: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-background);
+
+}
+.m{
+  color: var(--color-subtitles);
+}

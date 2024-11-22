@@ -1,0 +1,211 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import 'primeicons/primeicons.css';
+@import "@fontsource/outfit/index.css";
+@import "@fontsource/outfit/400.css"; /* Peso Regular */
+@import "@fontsource/outfit/700.css"; /* Peso Bold */
+/* Order */
+@layer reset, primeng;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+}
+:root {
+    /* Definición del hue (matiz) */
+    --primary-hue: 340; /* Matiz principal en rojo */
+    --secondary-hue: 200; /* Matiz secundario en azul */
+
+    /* Colores generados a partir del primary hue */
+    --color-primary-light: hsl(var(--primary-hue), 80%, 75%);
+    --color-primary: hsl(var(--primary-hue), 80%, 55%);
+    --color-primary-dark: hsl(var(--primary-hue), 80%, 35%);
+    --color-title: hsl(var(--primary-hue), 72%, 59%);
+    --color-subtitles: hsl(var(--primary-hue), 72%, 38%);
+    --body-color: hsl(var(--hue-color), 100%, 99%);
+    --color-border: hsl(var(--primary-hue), 66%, 47%);
+    /* Colores generados a partir del secondary hue */
+    --color-secondary-light: hsl(var(--secondary-hue), 80%, 75%);
+    --color-secondary: hsl(var(--secondary-hue), 80%, 55%);
+    --color-secondary-dark: hsl(var(--secondary-hue), 80%, 35%);
+    --color-parrafos: hsl(var(--primary-hue), 72%, 75%);
+    /* Otros colores basados en el primary hue */
+    --color-accent: hsl(calc(var(--primary-hue) + 30), 80%, 50%);
+    --color-background: hsl(var(--primary-hue), 100%, 99%);
+    --color-text: hsl(var(--primary-hue), 30%, 60%);
+    --color-gray :  #d4d4d4;
+}
+
+/* Aplica la fuente globalmente */
+body {
+    font-family: 'Outfit', sans-serif;
+  }
+/* Estilos del botón con el efecto de onda */
+.ripple-effect {
+    position: relative;
+    overflow: hidden; /* Importante para que la onda no se salga del botón */
+}
+h2{
+  color: var(--color-title);
+}
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+
+  
+.ripple-effect .ripple {
+    z-index: 1000;
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(149, 149, 149, 0.5); /* Color de la onda */
+    width: 20px; /* Tamaño inicial de la onda, puedes ajustarlo */
+    height: 20px;
+    transform: scale(0); /* Inicia pequeño */
+    pointer-events: none; /* Para que el `span` no interfiera con otros clics */
+    animation: ripple-animation 0.6s ease-out;
+}
+
+/* Definición de la animación */
+@keyframes ripple-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0.6; /* Transparencia inicial */
+    }
+    100% {
+        transform: scale(10); /* Tamaño máximo al finalizar */
+        opacity: 0; /* Desaparece gradualmente */
+    }
+}
+
+/* Eliminar el borde de enfoque en el botón */
+.ripple-effect:focus {
+    outline: none;
+}
+
+.press-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.1s ease, box-shadow 0.1s ease; /* Suaviza la animación */
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Reduce la sombra para dar efecto de profundidad */
+
+  }
+  
+  /* Efecto de presión al hacer clic */
+  .press-button:active {
+    transform: scale(0.99); /* Escala el botón al 95% de su tamaño para simular presión */
+  }
+  /* Contenedor para los botones */
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  /* Estilo base del botón */
+  .custom-button {
+    position: relative;
+    padding: 0.4rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo inicial semitransparente */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.4s ease;
+  }
+  
+  /* Overlay para el efecto de expansión */
+  .hover-overlay {
+    position: absolute;
+    top: -50px;
+    right: 0%;
+    left: -50%; /* Posición inicial desde la derecha, fuera del botón */
+    width: 200%;  /* Ancho suficiente para cubrir el botón */
+    height: 250%;
+    background-color: white; /* Color del efecto */
+    transform: translateX(-100%); /* Empieza fuera del botón */
+    transition: transform 0.4s ease; /* Animación de expansión */
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  /* Texto del botón */
+  .button-text {
+    
+    position: relative;
+    z-index: 2; /* Asegura que el texto esté encima del overlay */
+    transition: color 0.4s ease;
+  }
+  /* Hover: el overlay se mueve de derecha a izquierda, cubriendo el botón */
+  .custom-button:hover .hover-overlay {
+    transform: translateX(0); /* Mueve el overlay para cubrir todo el botón */
+  }
+  
+  .custom-button:hover .button-text {
+    color: black; /* Cambia el color del texto a negro */
+  }
+  .custom-shape-divider-bottom-1730772769 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+height: 100vh;
+    transform: rotate(180deg);
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1730772769 svg {
+    position: relative;
+    display: block;
+    width: calc(261% + 1.8px);
+    height: 100%;
+}
+
+.custom-shape-divider-bottom-1730772769 .shape-fill {
+    fill: hsl(0, 0%, 17%);
+}
+.p-dialog .p-dialog-content {
+  background: var(--color-background);
+  padding: 0 .8rem .8rem;
+}
+.p-dialog .p-dialog-header{
+  padding: 0.2rem 0.6rem !important;
+}
+section{
+  padding: 10rem 0 6rem;
+}
+
+.p-button:focus {
+  outline: none !important; /* Elimina el borde de enfoque */
+  box-shadow: none !important; /* También elimina el sombreado */
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 700;
+  color: var(--color-title);
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width:450px){
+  .custom-button{
+    flex: 1;
+  }
+  .p-dialog .p-dialog-header .p-dialog-title{
+  font-size: 0.9rem;
+
+  }
+}

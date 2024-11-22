@@ -1,0 +1,95 @@
+h2{
+    color: var(--color-title);
+  }
+  p{
+    color:#fff;
+    font-weight: 500;
+  }
+  .into{
+    color:  var(--color-text);
+  }
+  .heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  h3{
+    color:#fff;
+    line-height: 20px;
+  }
+   img{
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+   }
+  .custom-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Ajusta los valores para un efecto más oscuro */
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra más oscura */
+  }
+  
+  .shadow-2xl {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+  }
+
+  .html{
+background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  }
+  .css{
+
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    
+  }
+  .java{
+    background-color: #fbc87e;
+    background-image: linear-gradient(62deg, #fbc87e 0%, #cfc856 100%);
+    
+
+  }
+  .angular{
+    background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    
+  }
+
+  .react{
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    
+
+  }
+
+  .next{
+background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)
+  }
+
+ .bg-white{
+  cursor: pointer;
+  transition: 0.5s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+ }
+  .bg-white:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+  img{
+    transition: 0.5s ease;
+  }
+  .bg-white:hover img {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+  transition: transform 0.3s, filter 0.3s;
+}

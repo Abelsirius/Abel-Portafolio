@@ -1,0 +1,57 @@
+
+.about_img{
+    background-image: url(../../../assets/sobre_mi.webp);
+    background-size: cover;
+    height: 300px;
+    border-radius: 8px; 
+}
+
+p{
+  color:var(--color-text);
+}
+  .hover-overlay {
+    position: absolute;
+    top: -50px;
+    right: 0%;
+    left: -50%; /* Posición inicial desde la derecha, fuera del botón */
+    width: 200%;  /* Ancho suficiente para cubrir el botón */
+    height: 250%;
+    background-color: white; /* Color del efecto */
+    transform: translateX(-100%); /* Empieza fuera del botón */
+    transition: transform 0.4s ease; /* Animación de expansión */
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .oval-background {
+    position: relative;
+    background-size: cover;
+    height: 100vh; /* Ajusta la altura según tus necesidades */
+    clip-path: ellipse(75% 85% at 50% 100%); /* Ajusta el tamaño de la elipse y su posición */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  } 
+
+  h2{
+    color: var(--color-title);
+  }
+
+  .into{
+    color:  var(--color-text);
+  }
+  .custom-button {
+    position: relative;
+    padding: 0.4rem 1.5rem;
+    background-color: var(--color-primary); /* Fondo inicial semitransparente */
+    color: white !important; 
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.4s ease;
+  }

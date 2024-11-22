@@ -1,0 +1,141 @@
+h2{
+    color: var(--color-title);
+  }
+  p{
+    color:var(--color-text);
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .into{
+    color:  var(--color-text);
+  }
+  .heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  h3{
+    color:#fff;
+    line-height: 20px;
+  }
+
+  .carousel-container {
+    padding: 0 30px;
+    margin: auto; /* Centra el carrusel */
+}
+
+.carousel-item {
+    max-width: 80%; /* Controla el tamaño del producto */
+    max-height: 550px;
+    margin: auto; /* Centra el contenido en el carrusel */
+}
+
+.about_img{
+  background-image: url(../../../assets/sobre_mi.webp);
+  background-size: cover;
+  height: 300px;
+  border-radius: 8px; 
+}
+
+.hover-overlay {
+  position: absolute;
+  top: -50px;
+  right: 0%;
+  left: -50%; /* Posición inicial desde la derecha, fuera del botón */
+  width: 200%;  /* Ancho suficiente para cubrir el botón */
+  height: 250%;
+  background-color: white; /* Color del efecto */
+  transform: translateX(-100%); /* Empieza fuera del botón */
+  transition: transform 0.4s ease; /* Animación de expansión */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.oval-background {
+  position: relative;
+  background-size: cover;
+  height: 100vh; /* Ajusta la altura según tus necesidades */
+  clip-path: ellipse(75% 85% at 50% 100%); /* Ajusta el tamaño de la elipse y su posición */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+} 
+
+.custom-button {
+  position: relative;
+  padding: 0.4rem 1.5rem;
+  background-color: var(--color-primary); /* Fondo inicial semitransparente */
+  color: white !important; 
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.4s ease;
+}
+
+ .arrow-icon {
+  font-weight: 800;
+  font-size: .8rem;
+  margin-left: 10px;
+  transform: translateX(-5px);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.custom-button:hover .arrow-icon {
+  opacity: 1;
+  transform: translateX(3px); /* Movimiento de la flecha */
+}
+
+
+
+@media (max-width: 1550px) {
+  .responsive-flex {
+    flex-direction: column;
+    gap: 1px;
+  }
+  .carousel-container
+  {
+    padding: 0;
+  }
+  .carousel-item{
+    max-width:100%;
+  }
+  .imgPro{
+    flex:  3 !important;
+  }
+  .carousel-container,.carousel-item {
+    max-height: fit-content !important;   
+  }
+
+}
+@media (max-width: 650px) {
+   p{
+    font-size: .9rem;
+    overflow-y: auto;
+    max-height: 140px;
+   }
+   .relative img{
+    height: 250px;
+   }
+   .button-text{
+    font-size: 0.7rem !important;
+   }
+  }
+
+
+  .p-button:focus {
+    outline: none !important; /* Elimina el borde de enfoque */
+    box-shadow: none !important; /* También elimina el sombreado */
+  }

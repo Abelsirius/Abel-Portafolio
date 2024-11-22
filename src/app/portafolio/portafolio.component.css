@@ -1,0 +1,199 @@
+/* Estilos del efecto de onda */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.icon {
+    position: relative;
+    overflow: hidden;
+    background-image: url('../../assets/avatar1.jpg'); /* Asegúrate de que la ruta comience con / */
+    background-size: cover;
+    animation: latido 1.5s ease-in-out infinite; /* Aplica la animación */
+  }
+
+/* Animación de latido */
+@keyframes latido {
+  0%, 100% {
+    transform: scale(1); /* Tamaño normal */
+  }
+  50% {
+    transform: scale(1.1); /* Tamaño aumentado en el "latido" */
+  }
+}
+  .oval-background {
+    position: relative;
+    background-size: cover;
+    height: 100vh; /* Ajusta la altura según tus necesidades */
+    clip-path: ellipse(75% 85% at 50% 100%); /* Ajusta el tamaño de la elipse y su posición */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  } 
+.ripple-effect .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5); /* Color de la onda */
+    transform: scale(0);
+    width: 100px; /* Tamaño inicial de la onda */
+    height: 100px;
+    pointer-events: none;
+    animation: ripple-animation 0.6s ease-out;
+}
+
+/* Animación de expansión */
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Eliminar el borde de enfoque en el botón */
+.ripple-effect:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Contenedor para los botones */
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  /* Estilo base del botón */
+  .custom-button {
+    position: relative;
+    padding: 0.4rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo inicial semitransparente */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.4s ease;
+  }
+  
+  /* Overlay para el efecto de expansión */
+  .hover-overlay {
+    position: absolute;
+    top: -50px;
+    right: 0%;
+    left: -50%; /* Posición inicial desde la derecha, fuera del botón */
+    width: 200%;  /* Ancho suficiente para cubrir el botón */
+    height: 250%;
+    background-color: white; /* Color del efecto */
+    transform: translateX(-100%); /* Empieza fuera del botón */
+    transition: transform 0.4s ease; /* Animación de expansión */
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  /* Texto del botón */
+  .button-text {
+    position: relative;
+    z-index: 2; /* Asegura que el texto esté encima del overlay */
+    transition: color 0.4s ease;
+  }
+  
+  /* Hover: el overlay se mueve de derecha a izquierda, cubriendo el botón */
+  .custom-button:hover .hover-overlay {
+    transform: translateX(0); /* Mueve el overlay para cubrir todo el botón */
+  }
+  
+  .custom-button:hover .button-text {
+    color: black; /* Cambia el color del texto a negro */
+  }
+  .custom-shape-divider-bottom-1730772769 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+height: 100vh;
+    transform: rotate(180deg);
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1730772769 svg {
+    position: relative;
+    display: block;
+    width: calc(261% + 1.8px);
+    height: 100%;
+}
+
+.custom-shape-divider-bottom-1730772769 .shape-fill {
+    fill: hsl(0, 0%, 17%);
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura del viewport */
+  overflow: hidden;
+}
+
+.full-screen-svg {
+  width: 100%;
+  height: 100%; /* Asegura que el SVG ocupe toda la altura del contenedor */
+  display: block;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2.6rem; /* Espaciado entre iconos */
+  padding: 1rem;
+}
+
+.social-icons i {
+  font-size: 2rem; /* Tamaño del icono */
+  color: #ffffff; /* Color de los iconos, puedes cambiarlo */
+  transition: color 0.3s; /* Animación para cambio de color */
+}
+
+.social-icons i:hover {
+  color: var(--color-primary); /* Cambia el color al pasar el cursor, puedes ajustar */
+  cursor: pointer;
+}
+
+
+.relative.h-screen {
+  min-height: 100vh; /* Fuerza al contenedor a ocupar toda la altura del viewport */
+}
+
+.svg-container {
+  position: relative; /* Asegúrate de que el SVG esté en el contexto adecuado */
+  width: 100%;
+  height: 100vh; /* O usa 100% si estás seguro de que el contenedor ocupa toda la pantalla */
+  overflow: hidden;
+}
+
+@media screen and (max-width:650px) {
+  .button-container{
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width:1250px) {
+  .button-container{
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-height:610px) {
+  .box{
+    padding-top: 0.8rem  !important;
+  }
+}

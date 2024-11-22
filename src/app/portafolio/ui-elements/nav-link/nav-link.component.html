@@ -1,0 +1,17 @@
+<a
+      href="javascript:void(0);"
+      class="px-3 py-2 text-sm font-medium rounded-md transition-all duration-300"
+      [ngClass]="{
+        'bg-[#6e2d3db3]': active,
+        'text-gray-800': !active
+      }"
+      [ngStyle]="{
+        'color': isScrolled ? 'var(--color-title)' : 'white',
+        'background-color': isScrolled ? 'transparent' : '',
+        'border-bottom': isScrolled && active ? '2px solid var(--color-title)' : 'none',
+        'border-radius': isScrolled ? '0' : '4px'
+      }"
+      (click)="handleClick()"
+    >
+      {{ label }}
+    </a>
