@@ -21,8 +21,10 @@ export class ProyectosComponent implements OnInit {
 
   visible: boolean = false;
   dialogData: string = '';  // Almacena los datos dinámicos del diálogo
-  showDialog(data: string): void {
+  dialogDataParrafo: string = '';  // Almacena los datos dinámicos del diálogo
+  showDialog(data: string,parrafo:string): void {
        this.dialogData = data; // Asigna los datos que quieres pasar al diálogo
+       this.dialogDataParrafo = parrafo;
       this.visible = true;
   }
   products: Product[] = [];
