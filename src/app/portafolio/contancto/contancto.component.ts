@@ -1,11 +1,11 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { GlobalStateService } from '../../shared/servicios/global-state.service';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -25,6 +25,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 export class ContanctoComponent  implements AfterViewInit{
   value: string | undefined;
   public eventos = inject(GlobalStateService);
+  public platform = inject(PLATFORM_ID);
   contactForm: FormGroup;
   isLoading: boolean = false; // Controla el estado del loading spinner
   constructor(private fb: FormBuilder,private confirmationService: ConfirmationService,private messageService: MessageService) {
@@ -88,31 +89,34 @@ export class ContanctoComponent  implements AfterViewInit{
     }
   }
   ngAfterViewInit() {
-    gsap.registerPlugin(ScrollTrigger);
+    if(isPlatformBrowser(this.platform)){
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Seleccionamos todos los elementos con la clase .component
-    const elements = document.querySelectorAll('.xd5');
-
-    elements.forEach((element) => {
-      // Aseguramos que el elemento es de tipo HTMLElement
-      const el = element as HTMLElement;
-
-      // Usamos GSAP para animar el elemento mientras se hace scroll
-      gsap.fromTo(el,
-        { scale: 0.7 },  // Comienza con un tamaño pequeño
-        { 
-          scale: 1,  // Se agranda a su tamaño normal
-          ease: 'power3.out',  // Suavizado de la animación
-          delay: 0.5,  // Espera medio segundo antes de comenzar la animación
-          scrollTrigger: {
-            trigger: el,  // El trigger es el propio elemento
-            start: 'top 80%',  // Comienza cuando el 80% del elemento entra en el viewport
-            end: 'top 20%',    // Termina cuando el 20% del elemento sale del viewport
-            scrub: true,       // Sincroniza la animación con el scroll
-            markers: false     // Desactivar los marcadores para pruebas
+      // Seleccionamos todos los elementos con la clase .component
+      const elements = document.querySelectorAll('.xd5');
+  
+      elements.forEach((element) => {
+        // Aseguramos que el elemento es de tipo HTMLElement
+        const el = element as HTMLElement;
+  
+        // Usamos GSAP para animar el elemento mientras se hace scroll
+        gsap.fromTo(el,
+          { scale: 0.7 },  // Comienza con un tamaño pequeño
+          { 
+            scale: 1,  // Se agranda a su tamaño normal
+            ease: 'power3.out',  // Suavizado de la animación
+            delay: 0.5,  // Espera medio segundo antes de comenzar la animación
+            scrollTrigger: {
+              trigger: el,  // El trigger es el propio elemento
+              start: 'top 80%',  // Comienza cuando el 80% del elemento entra en el viewport
+              end: 'top 20%',    // Termina cuando el 20% del elemento sale del viewport
+              scrub: true,       // Sincroniza la animación con el scroll
+              markers: false     // Desactivar los marcadores para pruebas
+            }
           }
-        }
-      );
-    });
+        );
+      });
+    }
+
   }
 }

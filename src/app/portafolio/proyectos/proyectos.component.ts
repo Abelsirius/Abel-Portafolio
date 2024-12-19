@@ -1,5 +1,5 @@
-import { CommonModule,NgOptimizedImage } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { CommonModule,isPlatformBrowser,NgOptimizedImage } from '@angular/common';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { Product } from '../../shared/domain/product';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
@@ -18,7 +18,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
   styleUrl: './proyectos.component.css',
 })
 export class ProyectosComponent implements OnInit {
-
+  public platform = inject(PLATFORM_ID);
   visible: boolean = false;
   dialogData: string = '';  // Almacena los datos dinámicos del diálogo
   dialogDataParrafo: string = '';  // Almacena los datos dinámicos del diálogo
@@ -49,15 +49,15 @@ export class ProyectosComponent implements OnInit {
   }
   onTouchMove(event: TouchEvent) {
     const initialY = event.touches[0].clientY;
-    
-    // Agregamos el listener con el type assertion
-    (event.target as HTMLElement)?.addEventListener('touchmove', (e) => {
-      const touchEvent = e as TouchEvent; // Aseguramos que el evento sea de tipo TouchEvent
-      const currentY = touchEvent.touches[0].clientY;
-      if (Math.abs(currentY - initialY) > 10) {
-        e.stopPropagation(); // Permite el desplazamiento vertical
-      }
-    });
+    if(isPlatformBrowser(this.platform)){
+      (event.target as HTMLElement)?.addEventListener('touchmove', (e) => {
+        const touchEvent = e as TouchEvent; // Aseguramos que el evento sea de tipo TouchEvent
+        const currentY = touchEvent.touches[0].clientY;
+        if (Math.abs(currentY - initialY) > 10) {
+          e.stopPropagation(); // Permite el desplazamiento vertical
+        }
+      });
+    }
   }
     responsiveOptions: any[] | undefined;
 
@@ -92,32 +92,35 @@ export class ProyectosComponent implements OnInit {
         ];
     }
     ngAfterViewInit() {
-      gsap.registerPlugin(ScrollTrigger);
+
+      if(isPlatformBrowser(this.platform)){
+        gsap.registerPlugin(ScrollTrigger);
   
-      // Seleccionamos todos los elementos con la clase .component
-      const elements = document.querySelectorAll('.xd4');
-  
-      elements.forEach((element) => {
-        // Aseguramos que el elemento es de tipo HTMLElement
-        const el = element as HTMLElement;
-  
-        // Usamos GSAP para animar el elemento mientras se hace scroll
-        gsap.fromTo(el,
-          { scale: 0.8  },  // Comienza con un tamaño pequeño
-          { 
-            scale: 1,  // Se agranda a su tamaño normal
-            ease: 'power3.out',  // Suavizado de la animación
-            delay: 0.5,  // Espera medio segundo antes de comenzar la animación
-            scrollTrigger: {
-              trigger: el,  // El trigger es el propio elemento
-              start: 'top 80%',  // Comienza cuando el 80% del elemento entra en el viewport
-              end: 'top 20%',    // Termina cuando el 20% del elemento sale del viewport
-              scrub: true,       // Sincroniza la animación con el scroll
-              markers: false     // Desactivar los marcadores para pruebas
+        // Seleccionamos todos los elementos con la clase .component
+        const elements = document.querySelectorAll('.xd4');
+    
+        elements.forEach((element) => {
+          // Aseguramos que el elemento es de tipo HTMLElement
+          const el = element as HTMLElement;
+    
+          // Usamos GSAP para animar el elemento mientras se hace scroll
+          gsap.fromTo(el,
+            { scale: 0.8  },  // Comienza con un tamaño pequeño
+            { 
+              scale: 1,  // Se agranda a su tamaño normal
+              ease: 'power3.out',  // Suavizado de la animación
+              delay: 0.5,  // Espera medio segundo antes de comenzar la animación
+              scrollTrigger: {
+                trigger: el,  // El trigger es el propio elemento
+                start: 'top 80%',  // Comienza cuando el 80% del elemento entra en el viewport
+                end: 'top 20%',    // Termina cuando el 20% del elemento sale del viewport
+                scrub: true,       // Sincroniza la animación con el scroll
+                markers: false     // Desactivar los marcadores para pruebas
+              }
             }
-          }
-        );
-      });
+          );
+        });
+      }
     }
 
 }

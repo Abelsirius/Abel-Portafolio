@@ -16,7 +16,9 @@
             "outputPath": "dist/portafolio-actualizado",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -30,10 +32,17 @@
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": [ "node_modules/scrollreveal/dist/scrollreveal.min.js"],
+            "scripts": [
+              "node_modules/scrollreveal/dist/scrollreveal.min.js"
+            ],
             "baseHref": "/",
             "deployUrl": "/",
-            "webWorkerTsConfig": "tsconfig.worker.json"
+            "webWorkerTsConfig": "tsconfig.worker.json",
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {

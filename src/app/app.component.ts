@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject, OnInit, signal, viewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject, OnInit, PLATFORM_ID, signal, viewChildren } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { RippleModule } from 'primeng/ripple';
 import { HeaderComponent } from "./shared/componentes/header/header.component";
 import { FooterComponent } from "./portafolio/footer/footer.component";
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { ToastModule } from 'primeng/toast';
 import { GlobalStateService } from './shared/servicios/global-state.service';
@@ -63,13 +63,16 @@ export class AppComponent  implements OnInit{
       }
     });
   }
+  public plataform = inject(PLATFORM_ID);
   ngOnInit(): void {
+  if(isPlatformBrowser(this.plataform)){
     this.event.theme$.subscribe((theme)=>{
       console.log('CAMBIO EL OBSERVABLE')
       this.isDarkPage.update(()=>theme.darktheme)
     localStorage.setItem('dark-theme',theme.darktheme?'dark':'light');
 
      })
+  }
   }
 
   handClick(key:string){
