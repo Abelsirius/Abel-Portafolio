@@ -2,6 +2,7 @@
 @import "primeng/resources/primeng.css";
 @import 'primeicons/primeicons.css';
 @import "@fontsource/outfit/index.css";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
 @import "@fontsource/outfit/400.css"; /* Peso Regular */
 @import "@fontsource/outfit/700.css"; /* Peso Bold */
 /* Order */

@@ -56,8 +56,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "/Abel-Portafolio/",
-              "deployUrl": "/Abel-Portafolio/",
+"baseHref": "/",
+"deployUrl": "/",
               "budgets": [
                 {
                   "type": "initial",
@@ -121,7 +121,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/Abel-Portafolio/"
+            "baseHref": "/"
           }
         }
       }
