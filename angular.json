@@ -37,12 +37,8 @@
             ],
             "baseHref": "/",
             "deployUrl": "/",
-            "webWorkerTsConfig": "tsconfig.worker.json",
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "webWorkerTsConfig": "tsconfig.worker.json"
+           
           },
           "configurations": {
             "production": {
