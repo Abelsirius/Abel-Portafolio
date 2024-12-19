@@ -137,30 +137,29 @@
         class="transition-all duration-300 ease-in-out delay-150 path-3" transform="rotate(-180 720 350)"></path>
     </svg>
   </div>
-  <div class="relative  box custom-md:pt-[7rem] ">
-    <div class="w-full flex justify-center items-center pb-6 pt-[4rem]">
+  <div class="relative  box custom-md:pt-[7rem]   ">
+    <div class="w-full flex justify-center items-center pb-6 pt-[4rem] component">
       <div class="icon w-[190px] h-[190px] font-medium rounded-full border-[5px]  border-white"></div>
     </div>
-    <div class="flex justify-center items-center flex-col">
-      <h1 class="text-[2rem] font-bold text-[#fff] xl:text-[4rem]" @zoomIn>Desarrollador Web</h1>
+    <div class="flex justify-center items-center flex-col component">
+      <h1 class="text-[2rem] rolf font-bold text-[#fff] xl:text-[4rem]" @zoomIn>Desarrollador Web</h1>
       <div>
-        <p class="text-[#fff] text-[.7rem] text-center  xl:text-[1.1rem] px-4">
-          Hola, soy Abel, un desarrollador web apasionado por transformar ideas en experiencias digitales impactantes. 
-          Con una sólida trayectoria en programación y diseño, <br> me especializo en crear sitios web funcionales y atractivos que impulsan resultados. 
-          Mi compromiso es <br> ofrecer soluciones innovadoras que aporten valor y destaquen en cada proyecto.
+        <p class="text-[#fff] text-[.7rem] text-center  parallax-element  xl:text-[1.1rem] px-4 component" >
+        Soy Abel, desarrollador web y estudiante de Ingeniería de Sistemas, especializado en front-end.<br> 
+         <strong>Conecto empresas con clientes a través de soluciones web innovadoras y personalizadas.</strong>
 
         </p>
       </div>
       <div>
       </div>
-      <div>
-        <div class="button-container" @fadeIn>
-          <button class="custom-button p-button ripple-effect press-button" (click)="eventos.onRippleEffect($event);eventos.scrollToElement('contactoSeccion');">
-            <a class="button-text" >Contáctame</a>
+      <div class="component">
+        <div class="button-container w-full" @fadeIn>
+          <button class="custom-button p-button ripple-effect press-button " (click)="eventos.onRippleEffect($event);eventos.scrollToElement('proyectos');">
+            <a class="button-text" >Explora mi trabajo</a>
             <span class="hover-overlay"></span>
           </button>
-          <button class="custom-button p-button ripple-effect press-button" (click)="eventos.onRippleEffect($event);eventos.scrollToElement('mi');">
-            <span class="button-text">Conóceme más</span>
+          <button class="custom-button p-button ripple-effect press-button " (click)="eventos.onRippleEffect($event);eventos.scrollToElement('contactoSeccion');">
+            <span class="button-text">Contactame</span>
             <span class="hover-overlay"></span>
           </button>
         </div>
@@ -173,3 +172,10 @@
     </div>
   </div>
 </div>
+<main>
+  <app-sobre-mi class="component" dark></app-sobre-mi>
+  <app-habilidades class="component"></app-habilidades>
+  <app-servicios></app-servicios>
+  <app-proyectos></app-proyectos>
+  <app-contancto ></app-contancto>
+</main>

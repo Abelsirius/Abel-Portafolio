@@ -16,9 +16,7 @@
             "outputPath": "dist/portafolio-actualizado",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -32,11 +30,25 @@
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": [],
-             "baseHref": "/Abel-Portafolio/"
+            "scripts": [ "node_modules/scrollreveal/dist/scrollreveal.min.js"],
+            "baseHref": "/",
+            "deployUrl": "/",
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "baseHref": "/Abel-Portafolio/",
+              "deployUrl": "/Abel-Portafolio/",
               "budgets": [
                 {
                   "type": "initial",
@@ -48,13 +60,14 @@
                   "maximumWarning": "2kB",
                   "maximumError": "4kB"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
               "optimization": false,
+              "sourceMap": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "baseHref": "/",
+              "deployUrl": "/"
             }
           },
           "defaultConfiguration": "production"
@@ -63,13 +76,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Portafolio-Actualizado:build:production"
+              "buildTarget": "Portafolio-Actualizado:build:production" 
             },
             "development": {
-              "buildTarget": "Portafolio-Actualizado:build:development"
+              "buildTarget": "Portafolio-Actualizado:build:development" 
             }
           },
-          "defaultConfiguration": "development"
+      "defaultConfiguration": "production"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
@@ -77,10 +90,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
@@ -94,11 +104,16 @@
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": []
+            "scripts": [
+                 "node_modules/scrollreveal/dist/scrollreveal.min.js"
+            ]
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/Abel-Portafolio/"
+          }
         }
       }
     }

@@ -1,4 +1,4 @@
-<section class="relative" id="mi" >
+<section class="relative xd" id="mi" >
 <div>
     <div class="py-6 w-full flex flex-col justify-center items-center">
         <h2 class="font-semibold text-[2.5rem]">Sobre Mi</h2>
@@ -8,9 +8,8 @@
         <div class="about_img  w-full sm:w-[550px]">
         </div>
         <div class=" w-full sm:w-[550px]   sm:pt-3 ">
-            <p class="text-[1rem] 850px:text-[1.2rem]">
-                Soy un desarrollador web apasionado que comenzó como autodidacta, aprendiendo a través de proyectos y cursos online. Disfruto crear sitios modernos y funcionales, siempre buscando mejorar y aprender cada día. Mi meta es aportar valor con cada proyecto y dejar una huella en el mundo de la tecnología.
-                ¡Hablemos y hagamos algo genial juntos!
+            <p class="text-[0.89rem] 850px:text-[1.1rem]" [class.dark]="isDark()">
+                Hola, soy Abel Hurtado Sandoval -  desarrollador web apasionado, comence como una persona autodidacta desde los 16 años, aprendiendo a través de proyectos y cursos online. A lo largo de mi carrera, he dominado tecnologías como Next, React y Angular, y actualmente estudio Ingeniería de Sistemas en la UPAO en Trujillo, Perú. He trabajado como desarrollador front-end en la UCV, siempre buscando mejorar y aprender cada día. Mi objetivo es crear sitios modernos y funcionales, aportando valor con cada proyecto y dejando una huella en el mundo de la tecnología. ¡Hagamos algo genial juntos!
             </p>
             <button  class=" mt-3 custom-button p-button ripple-effect press-button w-full  sm:w-fit" (click)="eventos.onRippleEffect($event);eventos.scrollToElement('contactoSeccion')">
                 <span class="button-text text-center sm:text-left w-full">Contáctame</span>

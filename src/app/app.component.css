@@ -12,3 +12,8 @@
     align-items: center;
     z-index: 9999; /* Coloca el spinner por encima de todo */
   }
+  .dark{
+    background-color: var(--background-color-dark);
+  }
+
+  

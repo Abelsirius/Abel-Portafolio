@@ -76,6 +76,7 @@ html {
     background-color: rgba(255, 255, 255, 0.3); /* Fondo inicial semitransparente */
     color: white;
     font-weight: bold;
+    min-width: 120px;
     font-size: 1rem;
     border-radius: 8px;
     overflow: hidden;
@@ -102,9 +103,11 @@ html {
   /* Texto del botón */
   .button-text {
     position: relative;
+    font-size: 1.1rem;
     z-index: 2; /* Asegura que el texto esté encima del overlay */
     transition: color 0.4s ease;
   }
+
   
   /* Hover: el overlay se mueve de derecha a izquierda, cubriendo el botón */
   .custom-button:hover .hover-overlay {
@@ -179,10 +182,16 @@ height: 100vh;
   height: 100vh; /* O usa 100% si estás seguro de que el contenedor ocupa toda la pantalla */
   overflow: hidden;
 }
+.dark{
+   background-color: rgb(53, 53, 53) !important;
+}
 
 @media screen and (max-width:650px) {
   .button-container{
     padding: 1rem;
+  }
+  .button-text{
+    font-size: 0.8rem;
   }
 }
 
@@ -192,8 +201,15 @@ height: 100vh;
   }
 }
 
-@media screen and (max-height:610px) {
+@media screen and (max-height:750px) {
   .box{
     padding-top: 0.8rem  !important;
+  }
+  .rofl{
+ font-size: 1.3rem;
+  }
+  .icon{
+    height: 120px ;
+    width: 120px;
   }
 }

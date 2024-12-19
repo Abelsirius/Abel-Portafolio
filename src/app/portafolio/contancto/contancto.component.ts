@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
@@ -9,16 +9,20 @@ import { CommonModule } from '@angular/common';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 @Component({
   selector: 'app-contancto',
   standalone: true,
   imports: [ConfirmDialogModule,FormsModule, InputTextModule, FloatLabelModule,CommonModule,ReactiveFormsModule,ToastModule,ProgressSpinnerModule],
   templateUrl: './contancto.component.html',
-  styleUrl: './contancto.component.css',
-  providers:[GlobalStateService,MessageService,ConfirmationService]
+  styleUrls: ['./contancto.component.css'],
+  providers:[MessageService,ConfirmationService],
+  changeDetection: ChangeDetectionStrategy.OnPush
+  
 
 })
-export class ContanctoComponent  {
+export class ContanctoComponent  implements AfterViewInit{
   value: string | undefined;
   public eventos = inject(GlobalStateService);
   contactForm: FormGroup;
@@ -33,25 +37,8 @@ export class ContanctoComponent  {
   }
 
 
-  confirm1(event: Event) {
-    this.confirmationService.confirm({
-        target: event.target as EventTarget,
-        message: 'Are you sure that you want to proceed?',
-        header: 'Confirmation',
-        icon: 'pi pi-exclamation-triangle',
-        acceptIcon:"none",
-        rejectIcon:"none",
-        rejectButtonStyleClass:"p-button-text",
-        accept: () => {
-            this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
-        },
-        reject: () => {
-            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-        }
-    });
-}
   // Método que se ejecuta al enviar el formulario
-  onSubmit() {
+  onSubmit(event:any) {
     if (this.contactForm.valid) {
       this.isLoading = true;
       const templateParams = {
@@ -99,5 +86,33 @@ export class ContanctoComponent  {
         life: 2200
       });
     }
+  }
+  ngAfterViewInit() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Seleccionamos todos los elementos con la clase .component
+    const elements = document.querySelectorAll('.xd5');
+
+    elements.forEach((element) => {
+      // Aseguramos que el elemento es de tipo HTMLElement
+      const el = element as HTMLElement;
+
+      // Usamos GSAP para animar el elemento mientras se hace scroll
+      gsap.fromTo(el,
+        { scale: 0.7 },  // Comienza con un tamaño pequeño
+        { 
+          scale: 1,  // Se agranda a su tamaño normal
+          ease: 'power3.out',  // Suavizado de la animación
+          delay: 0.5,  // Espera medio segundo antes de comenzar la animación
+          scrollTrigger: {
+            trigger: el,  // El trigger es el propio elemento
+            start: 'top 80%',  // Comienza cuando el 80% del elemento entra en el viewport
+            end: 'top 20%',    // Termina cuando el 20% del elemento sale del viewport
+            scrub: true,       // Sincroniza la animación con el scroll
+            markers: false     // Desactivar los marcadores para pruebas
+          }
+        }
+      );
+    });
   }
 }

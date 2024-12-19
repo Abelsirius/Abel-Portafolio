@@ -1,8 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root', // Asegura que solo haya una instancia global
+})
 export class GlobalStateService {
+
+   
+  private darkTheme = new BehaviorSubject({
+    darktheme : true
+  })
+
+  public theme$ = this.darkTheme.asObservable();
+
+  public changeTheme(isDark:boolean):void{
+   this.darkTheme.next({darktheme:isDark})
+  }
+
   constructor() {}
 
   onRippleEffect(event: MouseEvent) {
@@ -46,8 +59,27 @@ scrollToElement(elementId: string, duration: number = 1000): void {
       return (-c / 2) * (t * (t - 2) - 1) + b;
     }
 
-    requestAnimationFrame(animation);
+    requestAnimationFrame(animation); 
   }
+
+  handleClick(router: { url: any; navigate: (arg0: string[]) => Promise<any>; },seccion: string) {
+    const currentRoute = router.url;
+    if (currentRoute !== '') {
+      // Si no estás en la página "inicio", redirige y luego haz scroll
+      router.navigate(['/']).then(() => {
+        setTimeout(() => {
+          this.scrollToElement(seccion);
+        }, 1000); // Asegura que la página se haya cargado
+      });
+    } else {
+      // Si ya estás en "inicio", solo realiza el scroll
+      this.scrollToElement('inicio');
+    }
+
+    // Emitir evento si es necesario
+  }
+  
+
 
 getProductsData() {
     return [

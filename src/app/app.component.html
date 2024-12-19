@@ -1,12 +1,8 @@
-<div *ngIf="!isLoading; else loading">
-   <app-header></app-header>
+
+<div *ngIf="!isLoading; else loading" [class.dark]="isDarkPage()">
+   <app-header (onClick)="handClick($event);" styleRojo></app-header>
    <main>
-     <app-portafolio></app-portafolio>
-     <app-sobre-mi></app-sobre-mi>
-     <app-habilidades></app-habilidades>
-     <app-servicios></app-servicios>
-     <app-proyectos></app-proyectos>
-     <app-contancto></app-contancto>
+    <router-outlet></router-outlet>
    </main>
    <app-footer></app-footer>
  </div>
@@ -16,3 +12,4 @@
      <p-progressSpinner></p-progressSpinner>
    </div>
  </ng-template>
+ 

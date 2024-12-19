@@ -1,0 +1,67 @@
+<div class="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] pb-16" [class.dark]="isDark()">
+    <!-- Título -->
+    <div class="text-center mb-16 bg relative z-0">
+ <div class="pt-16 z-10 relative">
+  <h2 class="text-4xl font-extrabold component  !text-[#fff]">
+    Mi Educación
+  </h2>
+  <p class="text-[0.8rem]  mt-2 px-2 !text-[#fff] component sm:text-[1.1rem]">
+    Estudio en la UPAO y también me gusta tomar cursos en  linea (Udemy,boocamps) <br> para seguir aprendiendo.
+  </p>
+ </div>
+    </div>
+  
+    <!-- Tarjetas de Educación -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:px-16">
+      <!-- Tarjeta 1 -->
+      <div class="group relative component border-2  border-[var(--color-primary-dark)] p-6 rounded-lg shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300">
+          <h3 class="text-xl font-bold text-[var(--color-title)] mb-2">
+              Ingeniería de Sistemas
+          </h3>
+          <p class="text-sm text-[var(--color-text)]">
+              UPAO (2024 - Actualidad)
+          </p>
+          <p class="mt-4 text-[var(--color-primary-dark)]">
+              Actualmente desarrollando habilidades en desarrollo web, bases de datos y tecnologías emergentes.
+          </p>
+      </div>
+
+  
+      <!-- Tarjeta 2 -->
+      <div class="group relative component border-2 border-[var(--color-primary)] p-6 rounded-lg shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-[var(--color-title)] mb-2">
+            Cursos en Udemy
+        </h3>
+        <p class="text-sm text-[var(--color-text)]">
+            Udemy (2022 - Actualidad)
+        </p>
+        <p class="mt-4  text-[var(--color-primary-dark)]">
+            Cursos de Angular, React, y herramientas de desarrollo web que me permiten seguir avanzando.
+        </p>
+    </div>
+
+  
+      <!-- Tarjeta 3 -->
+      <div class="group relative border-2 component border-[var(--color-primary)] p-6 rounded-lg shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-[var(--color-title)] mb-2">
+            Certificación en Front-End
+        </h3>
+        <p class="text-sm text-[var(--color-text)]">
+            Udemy (2023)
+        </p>
+        <p class="mt-4  text-[var(--color-primary-dark)] ">
+            Aprende sobre HTML, CSS, JavaScript y las mejores prácticas en el desarrollo front-end.
+        </p>
+    </div>
+    </div>
+  
+    <!-- Llamado a la acción -->
+    <div class="text-center mt-16">
+      <button  class=" mt-3 custom-button p-button ripple-effect press-button   sm:w-fit" (click)="onHandEvent($event);">
+        <span class="button-text text-center sm:text-left w-full">Contáctame</span>
+        <span class="hover-overlay"></span>
+    </button>
+    </div>
+    <!-- <app-test-web-worker></app-test-web-worker> -->
+  </div>
+  

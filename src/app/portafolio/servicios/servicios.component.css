@@ -1,9 +1,9 @@
 .card-container {
     background-color: var(--color-background);
     border-radius: 40px;
-    padding: 20px;
-    max-width: 300px;
-    width: 300px;
+    padding: 30px ;
+    max-width: 650px;
+    width: 650px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -27,6 +27,14 @@
     top: -40px;
     left: -30px;
   }
+  .white li{
+    color: #fff;
+  }
+
+  .dark{
+    background-color: var(--color-primary-secon);
+
+  }
   
   .decorative-bottom {
     bottom: -40px;
@@ -49,6 +57,14 @@
     font-weight: bold;
     color: var(--color-primary);
     margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
+  }
+  .title-respo{
+    width: 100%;
+    text-align: left;
+    color: var(--color-primary);
+
   }
   
   .features-list {
@@ -77,4 +93,15 @@
     transform: translateY(-5px);
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+  @media screen and (max-width:650px) {
+    .features-list{
+      overflow-y: auto;
+     }
+     .card-title{
+      font-size: 1.2rem;
+     }
+     .title-respo{
+      font-size: 0.95rem;
+     }
   }

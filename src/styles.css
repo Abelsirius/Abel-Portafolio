@@ -20,6 +20,9 @@ html {
     --color-primary-light: hsl(var(--primary-hue), 80%, 75%);
     --color-primary: hsl(var(--primary-hue), 80%, 55%);
     --color-primary-dark: hsl(var(--primary-hue), 80%, 35%);
+
+    --color-primary-secon: hsl(var(--primary-hue), 35%, 25%);
+
     --color-title: hsl(var(--primary-hue), 72%, 59%);
     --color-subtitles: hsl(var(--primary-hue), 72%, 38%);
     --body-color: hsl(var(--hue-color), 100%, 99%);
@@ -34,11 +37,18 @@ html {
     --color-background: hsl(var(--primary-hue), 100%, 99%);
     --color-text: hsl(var(--primary-hue), 30%, 60%);
     --color-gray :  #d4d4d4;
+
+    /* Dark */
+    --background-color-dark: hsl(var(--primary-hue), 30%, 15%);
 }
 
 /* Aplica la fuente globalmente */
 body {
     font-family: 'Outfit', sans-serif;
+  }
+  .p-button-label {
+    font-weight: 300 !important; /* Cambia el grosor del texto (normal) */
+    font-size: 0.9rem; /* Opcional: Ajustar el tamaño del texto */
   }
 /* Estilos del botón con el efecto de onda */
 .ripple-effect {
@@ -186,7 +196,7 @@ height: 100vh;
   padding: 0.2rem 0.6rem !important;
 }
 section{
-  padding: 10rem 0 6rem;
+  padding: 2rem 0 3rem;
 }
 
 .p-button:focus {
@@ -201,11 +211,32 @@ section{
 }
 
 @media screen and (max-width:450px){
-  .custom-button{
-    flex: 1;
-  }
+
   .p-dialog .p-dialog-header .p-dialog-title{
   font-size: 0.9rem;
 
   }
+}
+::-webkit-scrollbar {
+  width: 8px; /* Ancho del scroll */
+  height: 12px; /* Altura del scroll horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-background); /* Color del track (fondo del scroll) */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary); /* Color del thumb (parte desplazable) */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 3px solid var(--color-border); /* Borde alrededor del thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary-dark); /* Cambio de color al pasar el cursor sobre el thumb */
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--color-background); /* Fondo de la esquina (si el scroll es en dos direcciones) */
 }

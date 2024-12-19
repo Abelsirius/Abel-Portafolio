@@ -5,7 +5,6 @@ import { GlobalStateService } from '../../shared/servicios/global-state.service'
   selector: 'app-footer',
   standalone: true,
   imports: [],
-  providers:[GlobalStateService],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })

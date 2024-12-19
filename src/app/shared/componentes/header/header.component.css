@@ -52,10 +52,17 @@ li{
     background-color: #6e2d3db3; /* Color de fondo para el enlace activo */
     color: white; /* Color del texto para el enlace activo */
   }
+  button.active{
+    background-color: #6e2d3db3; /* Color de fondo para el enlace activo */
+    color: white; /* Color del texto para el enlace activo */
+  }
   .scroll-header {
   background-color: var(--color-background);
   box-shadow: 0 0 4px hsla(var(--primary-hue), 64%, 15%, .15);
   transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave */
+}
+.colorP{
+  color : var(--color-primary-light);
 }
 .movil{
   top: 0;
@@ -69,4 +76,7 @@ li{
 }
 .m{
   color: var(--color-subtitles);
+}
+.icono_menu{
+  color: var(--color-background);
 }

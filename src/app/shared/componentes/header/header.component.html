@@ -4,12 +4,12 @@
         
         <!-- Botón para abrir el menú móvil -->
         <div class="absolute inset-y-0 left-0 flex  z-30 items-center custom-md:hidden">
-          <button type="button" (click)="toggleMobileMenu()" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <button type="button" [ngStyle]="{color: isScrolled ? 'var(--color-title)' : 'white'}" (click)="toggleMobileMenu()" class="inline-flex items-center justify-center rounded-md p-2 icono_menu hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
             <span class="sr-only">Open main menu</span>
-            <svg *ngIf="!mobileMenuOpen" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <svg *ngIf="!mobileMenuOpen" class="block h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
-            <svg *ngIf="mobileMenuOpen" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <svg *ngIf="mobileMenuOpen" class="block h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -32,6 +32,7 @@
                       <li *ngFor="let link of links" >
                         <app-nav-link
                           [label]="link.label"
+                          [section]="link.section"
                           [active]="activeSection === link.section"
                           [isScrolled]="isScrolled"
                           (linkClick)="setActiveSection(link.section)"
@@ -49,9 +50,18 @@
   
             <!-- Dropdown menu -->
             <div *ngIf="dropdownOpen" id="dropdown-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+              <a routerLink="/educacion" class="block  px-4 py-2 text-sm text-gray-700"
                  [ngClass]="{'active': activeSection === 'educacion'}"
-                 role="menuitem" (click)="setActiveLink('educacion');_eventos.scrollToElement('proyectos');toggleMobileMenu()">Educación</a>
+                 role="menuitem" (click)="setActiveLink('educacion');">Educación</a>
+                @if(this.isDark()){
+                  <button #button [class.active]="isPressed()" class="w-full px-4  py-2 text-left" (click)="handClick($event)" >
+                    <p-button icon="pi pi-sun" class=" text-sm font-normal text-gray-700"  [class.colorP]="styleRojo()" label="Light" size="large" ></p-button>
+                  </button>
+                }@else{
+                  <button #button [class.active]="isPressed()" class="w-full px-4  py-2 text-left" (click)="handClick($event)" >
+                    <p-button icon="pi pi-moon" class=" text-sm font-normal text-gray-700"  [class.colorP]="styleRojo()" label="Dark" size="large" ></p-button>
+                  </button>
+                }
             </div>
           </div>
         </div>
@@ -59,24 +69,24 @@
     </div>
   
     <!-- Menú móvil colapsable -->
-    <div *ngIf="mobileMenuOpen" class="sm:hidden red" id="mobile-menu">
+    <div *ngIf="mobileMenuOpen" class="custom-md:hidden red" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 movil">
-        <a href="javascript:void(0);" 
+        <a href="javascript:void(0);"
            class="block m rounded-md px-3 py-2 text-base font-medium  hover:bg-customRed-dark hover:text-white"
            [ngClass]="{'active': activeSection === 'inicio'}"
-           (click)="setActive('inicio'); _eventos.scrollToElement('inicio');toggleMobileMenu()" >Inicio</a>
+           (click)="setActive('inicio'); _eventos.scrollToElement('inicio');toggleMobileMenu();handEvent('inicio')" >Inicio</a>
         <a href="javascript:void(0);"
            class="block m rounded-md px-3 py-2 text-base font-medium  hover:bg-customRed-dark hover:text-white"
            [ngClass]="{'active': activeSection === 'proyectos'}"
-           (click)="setActive('proyectos'); _eventos.scrollToElement('proyectos');toggleMobileMenu()">Proyectos</a>
+           (click)="setActive('proyectos'); _eventos.scrollToElement('proyectos');toggleMobileMenu();handEvent('proyectos')">Proyectos</a>
         <a href="javascript:void(0);" 
            class="block m rounded-md px-3 py-2 text-base font-medium  hover:bg-customRed-dark hover:text-white"
            [ngClass]="{'active': activeSection === 'servicios'}"
-           (click)="setActiveLink('servicios');_eventos.scrollToElement('servicios');toggleMobileMenu()">Servicios</a>
+           (click)="setActiveLink('servicios');_eventos.scrollToElement('servicios');toggleMobileMenu();handEvent('servicios')">Servicios</a>
         <a href="javascript:void(0);"
            class="block m rounded-md px-3 py-2 text-base font-medium  hover:bg-customRed-dark hover:text-white"
-           [ngClass]="{'active': activeSection === 'contactar'}"
-           (click)="setActiveLink('contactar');_eventos.scrollToElement('contactoSeccion');toggleMobileMenu()">Contactar</a>
+           [ngClass]="{'active': activeSection === 'contactoSeccion'}"
+           (click)="setActiveLink('contactar');_eventos.scrollToElement('contactoSeccion');toggleMobileMenu();handEvent('contactoSeccion')">Contactar</a>
       </div>
     </div>
   </nav>

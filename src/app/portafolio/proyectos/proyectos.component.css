@@ -1,10 +1,13 @@
-h2{
+h2,.op{
     color: var(--color-title);
   }
   p{
     color:var(--color-text);
     font-weight: 500;
     font-size: 1.1rem;
+  }
+  .op{
+    font-weight: 600;
   }
   .into{
     color:  var(--color-text);
@@ -26,7 +29,9 @@ h2{
     color:#fff;
     line-height: 20px;
   }
-
+.dark{
+  color:#fff;
+}
   .carousel-container {
     padding: 0 30px;
     margin: auto; /* Centra el carrusel */

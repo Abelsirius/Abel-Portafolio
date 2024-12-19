@@ -1,8 +1,8 @@
-<section class="py-9  h-fit " id="contactoSeccion" #contactoSeccion>
-  <p-toast></p-toast>
-  <p-confirmDialog />
+<p-toast></p-toast>
+<p-confirmDialog />
+<section class="py-9 xd5  h-fit  " id="contactoSeccion" #contactoSeccion>
 <!-- Capa de Loading -->
-<div *ngIf="isLoading" class="loading-overlay">
+<div *ngIf="isLoading" class="loading-overlay absolute z-40">
   <p-progressSpinner></p-progressSpinner>
 </div>
 
@@ -47,7 +47,7 @@
     <!-- Formulario de contacto -->
     <div class="py-8 px-12 w-full max-w-md text-white form relative">
       <h3 class="text-xl font-semibold mb-4 !text-[#fff] w-full !text-center">Contactarme</h3>
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)">
         <!-- Campo: Nombre -->
         <div class="mb-4">
           <input
@@ -103,9 +103,8 @@
         <!-- Botón de envío -->
         <div class="flex justify-center text-center">
           <button
-          (onClick)="confirm1($event)"
-            type="submit"
-            [disabled]="contactForm.invalid"
+          type="submit"
+          [disabled]="contactForm.invalid"
             class="mt-3 custom-button p-button ripple-effect press-button w-full sm:w-fit bg-pink-500 hover:bg-pink-600 text-white rounded py-2 px-4"
             (click)="eventos.onRippleEffect($event)"
           >

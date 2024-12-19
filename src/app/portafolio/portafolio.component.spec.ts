@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PortafolioComponent } from './portafolio.component';
+import PortafolioComponent from './portafolio.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa esto
 
 describe('PortafolioComponent', () => {
   let component: PortafolioComponent;
@@ -8,7 +8,7 @@ describe('PortafolioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PortafolioComponent]
+      imports: [PortafolioComponent,BrowserAnimationsModule]
     })
     .compileComponents();
 
